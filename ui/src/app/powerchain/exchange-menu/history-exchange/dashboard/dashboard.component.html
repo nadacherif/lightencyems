@@ -1,0 +1,112 @@
+<link
+  href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700"
+  rel="stylesheet"
+/>
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.3.1/css/all.min.css"
+  rel="stylesheet"
+/>
+
+<div class="main-content">
+  <div class="header bg-gradient-primary pb-5 pt-6 pt-md-4">
+    <div class="container-fluid">
+      <h1 class="mb-5 text-white">Transactions Stats</h1>
+      <div class="header-body">
+        <div class="row">
+          <div class="col-xl-4 col-lg-6">
+            <div class="card card-stats mb-4 mb-xl-0">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col">
+                    <h5 class="card-title text-uppercase text-muted mb-0">
+                      Number of Buyers
+                    </h5>
+                    <span class="h2 font-weight-bold mb-0">{{
+                      numberOfBuyers
+                    }}</span>
+                  </div>
+                  <div class="col-auto">
+                    <div
+                      class="icon icon-shape bg-success text-white rounded-circle shadow"
+                    >
+                      <i class="fas fa-users"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-4 col-lg-6">
+            <div class="card card-stats mb-4 mb-xl-0">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col">
+                    <h5 class="card-title text-uppercase text-muted mb-0">
+                      Number of Sellers
+                    </h5>
+                    <span class="h2 font-weight-bold mb-0">{{
+                      numberOfSellers
+                    }}</span>
+                  </div>
+                  <div class="col-auto">
+                    <div
+                      class="icon icon-shape bg-danger text-white rounded-circle shadow"
+                    >
+                      <i class="fas fa-users"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-4 col-lg-6" style="margin-top: 10px">
+            <div class="card card-stats mb-4 mb-xl-0">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col">
+                    <h5 class="card-title text-uppercase text-muted mb-0">
+                      Average Price per Kilowatt-Hour
+                    </h5>
+                    <span class="h2 font-weight-bold mb-0"
+                      >{{ averagePricePerKwh | number : "1.3-3" }} $</span
+                    >
+                  </div>
+                  <div class="col-auto">
+                    <div
+                      class="icon icon-shape bg-yellow text-white rounded-circle shadow"
+                    >
+                      <i class="fas fa-coins"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-4 col-lg-6" style="margin-top: 10px">
+            <div class="card card-stats mb-4 mb-xl-0">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col">
+                    <h5 class="card-title text-uppercase text-muted mb-0">
+                      Energy Transacted
+                    </h5>
+                    <span class="h2 font-weight-bold mb-0"
+                      >{{ totalEnergyTransacted }} kW</span
+                    >
+                  </div>
+                  <div class="col-auto">
+                    <div
+                      class="icon icon-shape bg-info text-white rounded-circle shadow"
+                    >
+                      <i class="fas fa-bolt"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

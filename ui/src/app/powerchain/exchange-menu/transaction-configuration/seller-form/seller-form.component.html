@@ -1,0 +1,88 @@
+<div class="stepsdemo-content">
+  <p-card>
+    <ng-template pTemplate="title"> Selling Configuration </ng-template>
+    <ng-template pTemplate="subtitle"> Enter your selling details </ng-template>
+    <ng-template pTemplate="content">
+      <form [formGroup]="form">
+        <div class="p-fluid">
+          <div class="field">
+            <label for="PS"> Desired price in dollar : </label>
+            <input
+              [ngClass]="{
+                'ng-dirty': form.get('PS').invalid && form.get('PS').touched
+              }"
+              formControlName="PS"
+              id="PS"
+              type="number"
+              required
+              pInputText
+            />
+            <small
+              *ngIf="form.get('PS').invalid && form.get('PS').touched"
+              class="p-error"
+            >
+              PS is required.
+            </small>
+          </div>
+          <div class="field">
+            <label for="DS">Distance in KM :</label>
+            <input
+              [ngClass]="{
+                'ng-dirty': form.get('DS').invalid && form.get('DS').touched
+              }"
+              formControlName="DS"
+              id="DS"
+              type="number"
+              required
+              pInputText
+            />
+            <small
+              *ngIf="form.get('DS').invalid && form.get('DS').touched"
+              class="p-error"
+            >
+              DS is required.
+            </small>
+          </div>
+          <div class="field">
+            <label for="EPS">Type of energy :</label>
+            <p-dropdown
+              [options]="items"
+              [virtualScroll]="true"
+              [virtualScrollItemSize]="38"
+              [ngClass]="{
+                'ng-dirty': form.get('EPS').invalid && form.get('EPS').touched
+              }"
+              formControlName="EPS"
+              name="EPS"
+              placeholder="Select type of energy"
+            ></p-dropdown>
+            <small
+              *ngIf="form.get('EPS').invalid && form.get('EPS').touched"
+              class="p-error"
+            >
+              EPS is required.
+            </small>
+          </div>
+        </div>
+      </form>
+    </ng-template>
+    <ng-template pTemplate="footer">
+      <div class="grid grid-nogutter justify-content-end">
+        <!-- Previous button -->
+        <p-button
+          (click)="prevPage()"
+          label="Previous"
+          icon="pi pi-angle-left"
+        ></p-button>
+        &nbsp;
+        <p-button
+          [disabled]="!form.valid"
+          (onClick)="saveAndNavigate()"
+          label="Next"
+          icon="pi pi-angle-right"
+          iconPos="right"
+        ></p-button>
+      </div>
+    </ng-template>
+  </p-card>
+</div>

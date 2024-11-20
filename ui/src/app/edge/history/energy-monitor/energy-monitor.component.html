@@ -1,0 +1,74 @@
+<div class="energy-monitor-container">
+  <!-- Loading State -->
+  <div *ngIf="loading" class="loading-container">
+    <p>Loading chart data...</p>
+    <!-- Optionally, you can add a spinner or loading animation here. -->
+  </div>
+
+  <!-- Chart Display -->
+  <div *ngIf="!loading">
+    <div class="card flex justify-content-center align-items-center">
+      <label for="edgeDropdown">Select Edge:</label>
+      <p-dropdown
+        [options]="edges"
+        [(ngModel)]="selectedEdge"
+        optionLabel="name"
+        (ngModelChange)="onEdgeSelect($event)"
+        id="edgeDropdown"
+      ></p-dropdown>
+      <label for="timeFrameDropdown">Select Time Frame:</label>
+      <p-dropdown
+        [options]="timeFrames"
+        [(ngModel)]="selectedTimeFrame"
+        optionLabel="label"
+        (ngModelChange)="onTimeFrameSelect($event)"
+        id="timeFrameDropdown"
+      ></p-dropdown>
+    </div>
+    <div class="card flex align-items-center">
+      <br />
+      <p>Grid(positive): Buy from the grid</p>
+      <br />
+      <p>Grid(negative): Sell to the grid</p>
+    </div>
+    <!-- Using ng2-charts to render the line chart with fetched data. -->
+    <canvas
+      baseChart
+      width="1200"
+      height="1200"
+      [datasets]="datasets"
+      [labels]="labels"
+      [options]="options"
+      [colors]="colors"
+      [chartType]="chartType"
+      [height]="getChartHeight()"
+    >
+    </canvas>
+  </div>
+</div>
+
+<!-- Optional Styling -->
+<style>
+  .energy-monitor-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .loading-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px; /* Adjust this height value based on your preference. */
+    width: 100%;
+    text-align: center;
+  }
+
+  .card {
+    display: flex;
+    align-items: center;
+    flex-direction: row; /* This is the default value, but added for clarity. */
+    gap: 10px; /* Adjust the gap as needed */
+  }
+</style>

@@ -1,0 +1,163 @@
+<div class="stepsdemo-content">
+  <p-card>
+    <ng-template pTemplate="title">Review & Confirm</ng-template>
+    <ng-template pTemplate="subtitle">
+      Please review your details and confirm
+    </ng-template>
+    <ng-template pTemplate="content">
+      <!-- Display the data here. This is a basic way; you can make it more structured -->
+      <div class="p-fluid">
+        <!-- Display the status of each form using PrimeNG p-messages -->
+        <p-messages
+          [(value)]="formStatusMessages"
+          [enableService]="false"
+        ></p-messages>
+      </div>
+      <div class="container">
+        <h3>Personal Information</h3>
+        <div class="field col-12">
+          <label for="name">Name :</label>
+          <b>
+            {{
+              allData.personalInformation.name
+                ? allData.personalInformation.name
+                : "-"
+            }}
+          </b>
+        </div>
+        <div class="field col-12">
+          <label for="accountId">Account Id :</label>
+          <b>
+            {{
+              allData.personalInformation.accountId
+                ? allData.personalInformation.accountId
+                : "-"
+            }}
+          </b>
+        </div>
+        <div class="field col-12">
+          <label for="privateKey">Private key :</label>
+          <b>
+            {{
+              allData.personalInformation.privateKey
+                ? allData.personalInformation.privateKey
+                : "-"
+            }}
+          </b>
+        </div>
+        <div class="field col-12">
+          <label for="x">Latitude :</label>
+          <b>
+            {{
+              allData.personalInformation.x
+                ? allData.personalInformation.x
+                : "-"
+            }}
+          </b>
+        </div>
+        <div class="field col-12">
+          <label for="y">Longitude :</label>
+          <b>
+            {{
+              allData.personalInformation.y
+                ? allData.personalInformation.y
+                : "-"
+            }}
+          </b>
+        </div>
+        <div class="field col-12">
+          <label for="y">Edge number :</label>
+          <b>
+            {{
+              allData.personalInformation.edge
+                ? allData.personalInformation.edge
+                : 0
+            }}
+          </b>
+        </div>
+      </div>
+      <div class="container mt-2">
+        <h3>Buyer configuration</h3>
+        <div class="field col-12">
+          <label for="PB">Desired price :</label>
+          <b>
+            {{
+              allData.buyingConfiguration.PB
+                ? allData.buyingConfiguration.PB
+                : "-"
+            }}
+          </b>
+        </div>
+        <div class="field col-12">
+          <label for="DB"> Preferred area's diameter in Km : </label>
+          <b>
+            {{
+              allData.buyingConfiguration.DB
+                ? allData.buyingConfiguration.DB
+                : "-"
+            }}
+          </b>
+        </div>
+        <div class="field col-12">
+          <label for="EBP">Type of energy :</label>
+          <b>
+            {{
+              allData.buyingConfiguration.EPB
+                ? allData.buyingConfiguration.EPB
+                : "-"
+            }}
+          </b>
+        </div>
+      </div>
+      <div class="container mt-2">
+        <h3>Seller configuration</h3>
+        <div class="field col-12">
+          <label for="PS">Desired price :</label>
+          <b>
+            {{
+              allData.sellingConfiguration.PS
+                ? allData.sellingConfiguration.PS
+                : "-"
+            }}
+          </b>
+        </div>
+        <div class="field col-12">
+          <label for="DS"> Preferred area's diameter in Km : </label>
+          <b>
+            {{
+              allData.sellingConfiguration.DS
+                ? allData.sellingConfiguration.DS
+                : "-"
+            }}
+          </b>
+        </div>
+        <div class="field col-12">
+          <label for="DBS">Type of energy :</label>
+          <b>
+            {{
+              allData.sellingConfiguration.EPS
+                ? allData.sellingConfiguration.EPS
+                : "-"
+            }}
+          </b>
+        </div>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="footer">
+      <div class="grid grid-nogutter justify-content-end">
+        <p-button
+          (click)="prevPage()"
+          label="Previous"
+          icon="pi pi-angle-left"
+        ></p-button>
+        &nbsp;
+        <p-button
+          (onClick)="submitAllForms()"
+          label="Submit"
+          icon="pi pi-check"
+          iconPos="right"
+        ></p-button>
+      </div>
+    </ng-template>
+  </p-card>
+</div>

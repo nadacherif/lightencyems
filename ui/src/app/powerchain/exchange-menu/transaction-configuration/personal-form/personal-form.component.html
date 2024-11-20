@@ -1,0 +1,121 @@
+<div class="stepsdemo-content">
+  <p-card>
+    <ng-template pTemplate="title"> Personal Information </ng-template>
+    <ng-template pTemplate="subtitle">
+      Enter your personal information
+    </ng-template>
+    <ng-template pTemplate="content">
+      <form [formGroup]="form" (ngSubmit)="saveForm()">
+        <div class="p-fluid">
+          <div class="field">
+            <label for="name">Name :</label>
+            <input
+              formControlName="name"
+              id="name"
+              type="text"
+              required
+              pInputText
+            />
+            <small
+              *ngIf="form.get('name').invalid && form.get('name').touched"
+              class="p-error"
+            >
+              Name is required.
+            </small>
+          </div>
+          <div class="field">
+            <label for="email"> Email : </label>
+            <input
+              formControlName="email"
+              id="email"
+              type="text"
+              required
+              pInputText
+            />
+            <small
+              *ngIf="form.get('email').invalid && form.get('email').touched"
+              class="p-error"
+            >
+              Email address is required.
+            </small>
+          </div>
+          <div class="field">
+            <label for="x">Latitude :</label>
+            <input
+              formControlName="x"
+              id="x"
+              type="number"
+              required
+              pInputText
+            />
+            <small
+              *ngIf="form.get('x').invalid && form.get('x').touched"
+              class="p-error"
+            >
+              Latitude is required.
+            </small>
+            <small
+              *ngIf="
+                form.get('x').hasError('min') || form.get('x').hasError('max')
+              "
+              class="p-error"
+            >
+              Latitude should be between 1 and 150.
+            </small>
+          </div>
+          <div class="field">
+            <label for="y">Longitude :</label>
+            <input
+              formControlName="y"
+              id="y"
+              type="number"
+              required
+              pInputText
+            />
+            <small
+              *ngIf="form.get('y').invalid && form.get('y').touched"
+              class="p-error"
+            >
+              Longitude is required.
+            </small>
+            <small
+              *ngIf="
+                form.get('y').hasError('min') || form.get('y').hasError('max')
+              "
+              class="p-error"
+            >
+              Longitude should be between 1 and 150.
+            </small>
+          </div>
+          <div class="field">
+            <label for="y">Edge number :</label>
+            <input
+              formControlName="edge"
+              id="edge"
+              type="number"
+              required
+              pInputText
+            />
+            <small
+              *ngIf="form.get('edge').invalid && form.get('edge').touched"
+              class="p-error"
+            >
+              Edge number is required.
+            </small>
+          </div>
+        </div>
+      </form>
+    </ng-template>
+    <ng-template pTemplate="footer">
+      <div class="grid grid-nogutter justify-content-end">
+        <p-button
+          [disabled]="!form.valid"
+          (click)="saveForm()"
+          label="Next"
+          icon="pi pi-angle-right"
+          iconPos="right"
+        ></p-button>
+      </div>
+    </ng-template>
+  </p-card>
+</div>

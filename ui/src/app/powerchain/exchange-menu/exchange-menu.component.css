@@ -1,0 +1,7 @@
+.custom-button {
+  background-color: orange; /* Set the background color to orange */
+  color: white; /* Set the text color to white or another suitable color */
+  border: none; /* Remove the button border */
+  padding: 10px 20px; /* Adjust padding as needed */
+  cursor: pointer; /* Change cursor on hover to indicate interactivity */
+}

@@ -1,0 +1,88 @@
+<div class="stepsdemo-content">
+  <p-card>
+    <ng-template pTemplate="title"> Buying Configuration </ng-template>
+    <ng-template pTemplate="subtitle"> Enter your buying details </ng-template>
+    <ng-template pTemplate="content">
+      <form [formGroup]="form">
+        <div class="p-fluid">
+          <div class="field">
+            <label for="PB"> Desired price in dollar : </label>
+            <input
+              [ngClass]="{
+                'ng-dirty': form.get('PB').invalid && form.get('PB').touched
+              }"
+              formControlName="PB"
+              id="PB"
+              type="number"
+              required
+              pInputText
+            />
+            <small
+              *ngIf="form.get('PB').invalid && form.get('PB').touched"
+              class="p-error"
+            >
+              PB is required.
+            </small>
+          </div>
+          <div class="field">
+            <label for="DB">Distance in KM :</label>
+            <input
+              [ngClass]="{
+                'ng-dirty': form.get('DB').invalid && form.get('DB').touched
+              }"
+              formControlName="DB"
+              id="DB"
+              type="number"
+              required
+              pInputText
+            />
+            <small
+              *ngIf="form.get('DB').invalid && form.get('DB').touched"
+              class="p-error"
+            >
+              DB is required.
+            </small>
+          </div>
+          <div class="field mt-2">
+            <label for="EPB">Type of energy :</label>
+            <p-dropdown
+              [options]="items"
+              [virtualScroll]="true"
+              [virtualScrollItemSize]="38"
+              [ngClass]="{
+                'ng-dirty': form.get('EPB').invalid && form.get('EPB').touched
+              }"
+              formControlName="EPB"
+              name="EPB"
+              placeholder="Select type of energy"
+            ></p-dropdown>
+            <small
+              *ngIf="form.get('EPB').invalid && form.get('EPB').touched"
+              class="p-error"
+            >
+              EPB is required.
+            </small>
+          </div>
+        </div>
+      </form>
+    </ng-template>
+    <ng-template pTemplate="footer">
+      <div class="grid grid-nogutter justify-content-end">
+        <!-- Previous button -->
+        <p-button
+          (click)="prevPage()"
+          label="Previous"
+          icon="pi pi-angle-left"
+        ></p-button>
+        &nbsp;
+        <p-button
+          [disabled]="!form.valid"
+          (onClick)="saveForm()"
+          label="Next"
+          icon="pi pi-angle-right"
+          iconPos="right"
+        ></p-button>
+      </div>
+    </ng-template>
+  </p-card>
+</div>

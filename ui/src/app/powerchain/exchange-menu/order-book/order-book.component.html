@@ -1,0 +1,120 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <h5 class="card-title mt-4">&nbsp;Buy orders</h5>
+        <p-table
+          [value]="buyers"
+          [customSort]="true"
+          [tableStyle]="{ 'min-width': '60rem' }"
+          [scrollable]="true"
+          (sortFunction)="customSortBuyers($event)"
+          scrollHeight="380px"
+        >
+          <ng-template pTemplate="header">
+            <tr>
+              <th pSortableColumn="name" style="width: 20%">
+                Name
+                <p-sortIcon field="name"></p-sortIcon>
+              </th>
+              <th pSortableColumn="EB" style="width: 20%">
+                Energy amount
+                <p-sortIcon field="EB"></p-sortIcon>
+              </th>
+              <th pSortableColumn="EPB" style="width: 20%">
+                Energy type
+                <p-sortIcon field="EPB"></p-sortIcon>
+              </th>
+              <th pSortableColumn="DB" style="width: 20%">
+                Distance (Km)
+                <p-sortIcon field="DB"></p-sortIcon>
+              </th>
+              <th pSortableColumn="PB" style="width: 20%">
+                Desired price (Kwh)
+                <p-sortIcon field="PB"></p-sortIcon>
+              </th>
+              <th pSortableColumn="id" style="width: 20%">
+                Account ID
+                <p-sortIcon field="id"></p-sortIcon>
+              </th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-buyer>
+            <tr>
+              <td>{{ buyer.name }}</td>
+              <td>{{ buyer.EB }}</td>
+              <td>
+                {{ buyer.EPB | titlecase }}
+              </td>
+              <td>{{ buyer.DB }}</td>
+              <td>
+                {{ buyer.PB | currency : "USD" }}
+              </td>
+              <td>
+                {{ buyer.account_address }}
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card">
+        <h5 class="card-title mt-4">&nbsp;Sell orders</h5>
+        <p-table
+          [value]="sellers"
+          [customSort]="true"
+          [tableStyle]="{ 'min-width': '60rem' }"
+          [scrollable]="true"
+          (sortFunction)="customSortSellers($event)"
+          scrollHeight="380px"
+        >
+          <ng-template pTemplate="header">
+            <tr>
+              <th pSortableColumn="name" style="width: 20%">
+                Name
+                <p-sortIcon field="name"></p-sortIcon>
+              </th>
+              <th pSortableColumn="ES" style="width: 20%">
+                Energy amount
+                <p-sortIcon field="ES"></p-sortIcon>
+              </th>
+              <th pSortableColumn="EPS" style="width: 20%">
+                Energy type
+                <p-sortIcon field="EPS"></p-sortIcon>
+              </th>
+              <th pSortableColumn="DS" style="width: 20%">
+                Distance (Km)
+                <p-sortIcon field="DS"></p-sortIcon>
+              </th>
+              <th pSortableColumn="PS" style="width: 20%">
+                Desired price (Kwh)
+                <p-sortIcon field="PS"></p-sortIcon>
+              </th>
+              <th pSortableColumn="id" style="width: 20%">
+                Account ID
+                <p-sortIcon field="id"></p-sortIcon>
+              </th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-seller>
+            <tr>
+              <td>{{ seller.name }}</td>
+              <td>{{ seller.ES }}</td>
+              <td>
+                {{ seller.EPS | titlecase }}
+              </td>
+              <td>{{ seller.DS }}</td>
+              <td>
+                {{ seller.PS | currency : "USD" }}
+              </td>
+              <td>
+                {{ seller.account_address }}
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+    </div>
+  </div>
+</div>

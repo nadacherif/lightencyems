@@ -1,0 +1,150 @@
+<app-dashboard></app-dashboard>
+<div pFocusTrap style="display: flex; justify-content: center">
+  <div style="margin: 20px">
+    <p-autoComplete
+      [(ngModel)]="searchQuery"
+      [dropdown]="true"
+      [suggestions]="filteredSatellites"
+      (completeMethod)="searchTransactionsAutocomplete($event)"
+      placeholder="Enter your satellite"
+      field="name"
+    ></p-autoComplete>
+  </div>
+  <div style="margin: 20px">
+    <p-dropdown
+      [options]="functionalities"
+      [(ngModel)]="selectedFunctionality"
+      placeholder="Seller / Buyer"
+      optionLabel="name"
+      [showClear]="true"
+      (onChange)="onFunctionalityChange()"
+    ></p-dropdown>
+  </div>
+  <div style="margin: 20px">
+    <p-button
+      icon="pi pi-search"
+      label="Search"
+      [loading]="loading"
+      (onClick)="searchTransactions()"
+    ></p-button>
+  </div>
+</div>
+<div class="card">
+  <p-table
+    [value]="transactions"
+    [customSort]="true"
+    [tableStyle]="{ 'min-width': '60rem' }"
+    (sortFunction)="customSortBuyers($event)"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="transaction" style="width: 20%">
+          Transaction receipt
+          <p-sortIcon field="transaction"></p-sortIcon>
+        </th>
+        <th pSortableColumn="name" style="width: 20%">
+          Transacted energy
+          <p-sortIcon field="name"></p-sortIcon>
+        </th>
+        <th pSortableColumn="EB" style="width: 20%">
+          Transaction price
+          <p-sortIcon field="EB"></p-sortIcon>
+        </th>
+        <th pSortableColumn="EPB" style="width: 20%">
+          Buyer
+          <p-sortIcon field="EPB"></p-sortIcon>
+        </th>
+        <th pSortableColumn="DB" style="width: 20%">
+          Seller
+          <p-sortIcon field="DB"></p-sortIcon>
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-transaction>
+      <tr>
+        <td>
+          <p-button
+            (click)="openTransactionDetails(transaction)"
+            label="{{ transaction['Transaction Receipt'] }}"
+            styleClass="p-button-link"
+          >
+          </p-button>
+        </td>
+        <td>
+          {{ transaction["Energy Transacted"] }}
+        </td>
+        <td>
+          {{ transaction["Transaction Price"] }}
+        </td>
+        <td>
+          {{ transaction.buyer | titlecase }}
+        </td>
+        <td>
+          {{ transaction.seller }}
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+  <p-tabView styleClass="tabview-custom">
+    <p-tabPanel>
+      <ng-template pTemplate="header">
+        <i class="pi pi-chart-bar" style="margin: 10px"></i>
+        <span>Bar Graphs</span>
+      </ng-template>
+      <!-- Display Bought/Sold Energy Chart -->
+      <div style="width: 80%; margin: 20px auto">
+        <canvas
+          baseChart
+          [datasets]="transactedEnergyLineData.datasets"
+          [labels]="transactedEnergyLineData.labels"
+          [options]="chartOptions"
+          [colors]="chartColors"
+          [legend]="true"
+          [chartType]="'bar'"
+        ></canvas>
+      </div>
+      <!-- Display Buy/Sell Price Chart -->
+      <div style="width: 80%; margin: 20px auto">
+        <canvas
+          baseChart
+          [datasets]="transactionPriceLineData.datasets"
+          [labels]="transactionPriceLineData.labels"
+          [options]="chartOptions"
+          [colors]="chartColors"
+          [legend]="true"
+          [chartType]="'bar'"
+        ></canvas>
+      </div>
+    </p-tabPanel>
+    <p-tabPanel header="Header II">
+      <ng-template pTemplate="header">
+        <i class="pi pi-chart-line" style="margin: 10px"></i>
+        <span>Line Graphs</span>
+      </ng-template>
+      <!-- Display Bought/Sold Energy Chart -->
+      <div style="width: 80%; margin: 20px auto">
+        <canvas
+          baseChart
+          [datasets]="transactedEnergyLineData.datasets"
+          [labels]="transactedEnergyLineData.labels"
+          [options]="chartOptions"
+          [colors]="chartColors"
+          [legend]="true"
+          [chartType]="'line'"
+        ></canvas>
+      </div>
+      <!-- Display Buy/Sell Price Chart -->
+      <div style="width: 80%; margin: 20px auto">
+        <canvas
+          baseChart
+          [datasets]="transactionPriceLineData.datasets"
+          [labels]="transactionPriceLineData.labels"
+          [options]="chartOptions"
+          [colors]="chartColors"
+          [legend]="true"
+          [chartType]="'line'"
+        ></canvas>
+      </div>
+    </p-tabPanel>
+  </p-tabView>
+</div>

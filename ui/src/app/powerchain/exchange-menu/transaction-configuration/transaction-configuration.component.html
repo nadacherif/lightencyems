@@ -1,0 +1,348 @@
+<div class="container mt-4">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="card">
+				<p-toast></p-toast>
+				<p-steps [model]="itemsMenu"
+					[readonly]="true"></p-steps>
+			</div>
+			<router-outlet></router-outlet>
+			<!-- <div class="card mt-4 mb-4">
+				<form (ngSubmit)="submitForm()">
+					<div class="row mt-4">
+						<div class="col-md-12">
+							<div class="row">
+								<div class="col-md-6">
+									<label class="mb-2 block font-bold mb-4"
+										for="horizontal">
+										&nbsp;&nbsp;&nbsp;The buyer name :
+									</label>
+									&nbsp;
+								</div>
+								<div class="col-md-6">
+									<input [(ngModel)]="name"
+										pInputText
+										id="username"
+										name="name"
+										placeholder="Name">
+								</div>
+							</div>
+						</div>
+						<div class="col-md-12 mt-4">
+							<div class="row">
+								<div class="col-md-6">
+									<label class="mb-2 block font-bold mb-4"
+										for="horizontal">
+										&nbsp;&nbsp;&nbsp;Account ID :
+									</label>
+									&nbsp;
+								</div>
+								<div class="col-md-6">
+									<input [(ngModel)]="accountIdBuyer"
+										pInputText
+										id="accountIdBuyer"
+										name="accountIdBuyer"
+										placeholder="Account ID">
+								</div>
+							</div>
+						</div>
+						<div class="col-md-12 mt-4">
+							<div class="row">
+								<div class="col-md-6">
+									<label class="mb-2 block font-bold mb-4"
+										for="horizontal">
+										&nbsp;&nbsp;&nbsp;Private key :
+									</label>
+									&nbsp;
+								</div>
+								<div class="col-md-6">
+									<input [(ngModel)]="privateKeyBuyer"
+										pInputText
+										id="privateKeyBuyer"
+										name="privateKeyBuyer"
+										placeholder="Private key">
+								</div>
+							</div>
+						</div>
+						<div class="col-md-12 mt-4">
+							<div class="row">
+								<div class="col-md-6">
+									<label class="mb-2 block font-bold mb-4"
+										for="horizontal">
+										&nbsp;&nbsp;&nbsp;Prefered type of energy :
+									</label>
+									&nbsp;
+								</div>
+								<div class="col-md-6">
+									<p-dropdown [options]="items"
+										[(ngModel)]="selectedItem"
+										[virtualScroll]="true"
+										[virtualScrollItemSize]="38"
+										name="selectedItem"
+										placeholder="Select type of energy"></p-dropdown>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-12 mt-4">
+							<div class="row">
+								<div class="col-md-6">
+									<label class="mb-2 block font-bold mb-4"
+										for="horizontal">
+										&nbsp;&nbsp;&nbsp;How many Kwh do you want to buy ? :
+									</label>
+									&nbsp;
+								</div>
+								<div class="col-md-6">
+									<p-inputNumber [(ngModel)]="eb"
+										[showButtons]="true"
+										name="eb"
+										suffix=" Kwh"
+										inputId="stacked"
+										placeholder="Amount in Kwh"></p-inputNumber>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-12 mt-4">
+							<div class="row">
+								<div class="col-md-6">
+									<label class="mb-2 block font-bold mb-4"
+										for="horizontal">
+										&nbsp;&nbsp;&nbsp;What is your desired price per Kwh ? :
+									</label>
+									&nbsp;
+								</div>
+								<div class="col-md-6">
+									<p-inputNumber [(ngModel)]="pb"
+										name="pb"
+										inputId="currency-us"
+										mode="currency"
+										currency="USD"
+										locale="en-US"
+										placeholder="Desired price in $">
+									</p-inputNumber>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-12 mt-4">
+							<div class="row">
+								<div class="col-md-6">
+									<label class="mb-2 block font-bold mb-4"
+										for="horizontal">
+										&nbsp;&nbsp;&nbsp;Preferred area's diameter in Km ? :
+									</label>
+									&nbsp;
+								</div>
+								<div class="col-md-6">
+									<p-inputNumber [(ngModel)]="db"
+										name="db"
+										inputId="mile"
+										suffix=" Km"
+										placeholder="Distance in Km">
+									</p-inputNumber>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-12 mt-4">
+							<div class="row">
+								<div class="col-md-6">
+									<label class="mb-2 block font-bold mb-4"
+										for="horizontal">
+										&nbsp;&nbsp;&nbsp;What is your location ? :
+									</label>
+									&nbsp;&nbsp;&nbsp;
+								</div>
+								<div class="col-md-6">
+									<div class="row">
+										<div class="col-md-12">
+											<p-inputNumber [(ngModel)]="xb"
+												name="xb"
+												inputId="integeronly"
+												placeholder="Longitude">
+											</p-inputNumber>
+										</div>
+										<div class="col-md-12 mt-4">
+											<p-inputNumber [(ngModel)]="yb"
+												name="yb"
+												inputId="integeronly"
+												placeholder="Latitude">
+											</p-inputNumber>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="card-footer mt-4">
+						<div class="text-center">
+							<p-button [loading]="loading"
+								type="submit"
+								icon="pi pi-check"
+								styleClass="p-button-success"
+								label="Buy order"></p-button>
+						</div>
+					</div>
+				</form>
+			</div> -->
+		</div>
+		<!-- <div class="col-md-6">
+			<div class="card mt-4 mb-4">
+				<form (ngSubmit)="submitFormSeller()">
+					<div class="row mt-4">
+						<div class="col-md-12">
+							<div class="row">
+								<div class="col-md-6">
+									<label class="mb-2 block font-bold mb-4"
+										for="horizontal">
+										&nbsp;&nbsp;&nbsp;The seller name :
+									</label>
+									&nbsp;
+								</div>
+								<div class="col-md-6">
+									<input [(ngModel)]="nameSeller"
+										pInputText
+										id="username"
+										name="nameSeller"
+										placeholder="Name">
+								</div>
+							</div>
+						</div>
+						<div class="col-md-12 mt-4">
+							<div class="row">
+								<div class="col-md-6">
+									<label class="mb-2 block font-bold mb-4"
+										for="horizontal">
+										&nbsp;&nbsp;&nbsp;Account ID :
+									</label>
+									&nbsp;
+								</div>
+								<div class="col-md-6">
+									<input [(ngModel)]="accountIdSeller"
+										pInputText
+										id="accountIdSeller"
+										name="accountIdSeller"
+										placeholder="Account ID">
+								</div>
+							</div>
+						</div>
+						<div class="col-md-12 mt-4">
+							<div class="row">
+								<div class="col-md-6">
+									<label class="mb-2 block font-bold mb-4"
+										for="horizontal">
+										&nbsp;&nbsp;&nbsp; Prefered type of energy :
+									</label>
+									&nbsp;
+								</div>
+								<div class="col-md-6">
+									<p-dropdown [options]="items"
+										[(ngModel)]="selectedItem"
+										[virtualScroll]="true"
+										[virtualScrollItemSize]="38"
+										name="selectedItem"
+										placeholder="Select type of energy"></p-dropdown>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-12 mt-4">
+							<div class="row">
+								<div class="col-md-6">
+									<label class="mb-2 block font-bold mb-4"
+										for="horizontal">
+										&nbsp;&nbsp;&nbsp;How many Kwh do you want to sell ? :
+									</label>
+									&nbsp;
+								</div>
+								<div class="col-md-6">
+									<p-inputNumber [(ngModel)]="es"
+										[showButtons]="true"
+										name="es"
+										suffix=" Kwh"
+										inputId="stacked"
+										placeholder="Amount in Kwh"></p-inputNumber>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-12 mt-4">
+							<div class="row">
+								<div class="col-md-6">
+									<label class="mb-2 block font-bold mb-4"
+										for="horizontal">
+										&nbsp;&nbsp;&nbsp;What is your desired price per Kwh ? :
+									</label>
+									&nbsp;
+								</div>
+								<div class="col-md-6">
+									<p-inputNumber [(ngModel)]="ps"
+										name="ps"
+										inputId="currency-us"
+										mode="currency"
+										currency="USD"
+										locale="en-US"
+										placeholder="Desired price in $">
+									</p-inputNumber>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-12 mt-4">
+							<div class="row">
+								<div class="col-md-6">
+									<label class="mb-2 block font-bold mb-4"
+										for="horizontal">
+										&nbsp;&nbsp;&nbsp;Preferred area's diameter in Km ? :
+									</label>
+									&nbsp;
+								</div>
+								<div class="col-md-6">
+									<p-inputNumber [(ngModel)]="ds"
+										name="ds"
+										inputId="mile"
+										suffix=" Km"
+										placeholder="Distance in Km">
+									</p-inputNumber>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-12 mt-4">
+							<div class="row">
+								<div class="col-md-6">
+									<label class="mb-2 block font-bold mb-4"
+										for="horizontal">
+										&nbsp;&nbsp;&nbsp;What is your location ? :
+									</label>
+									&nbsp;&nbsp;&nbsp;
+								</div>
+								<div class="col-md-6">
+									<div class="row">
+										<div class="col-md-12">
+											<p-inputNumber [(ngModel)]="xs"
+												name="xs"
+												inputId="integeronly"
+												placeholder="Longitude">
+											</p-inputNumber>
+										</div>
+										<div class="col-md-12 mt-4">
+											<p-inputNumber [(ngModel)]="ys"
+												name="ys"
+												inputId="integeronly"
+												placeholder="Latitude">
+											</p-inputNumber>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="card-footer mt-4">
+						<div class="text-center">
+							<p-button [loading]="loading"
+								type="submit"
+								icon="pi pi-check"
+								styleClass="p-button-danger"
+								label="Sell order"></p-button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div> -->
+	</div>
+</div>
